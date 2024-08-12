@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>Tetris JS</title>
+  <link rel="stylesheet" href="Tetris%20JS_files/styles.css">
+
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://www.baptistebrunet.com/games/tetris_js/images/icon/144.png">
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://www.baptistebrunet.com/games/tetris_js/images/icon/114.png">
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://www.baptistebrunet.com/games/tetris_js/images/icon/72.png">
+  <link rel="apple-touch-icon-precomposed" href="http://www.baptistebrunet.com/games/tetris_js/images/icon/57.png">
+  <link rel="shortcut icon" href="http://www.baptistebrunet.com/games/tetris_js/images/icon/57.png">
+</head>
+<body>
+  <div id="page">
+    <div id="page_home" class="page" style="display: none;">
+      <h1>Tetris JS</h1>
+      <div class="controls">
+        <div>Keyboard controls :</div>
+        <input type="radio" name="switch_mode" id="bt_type_a" class="on">
+        <label for="bt_type_a" class="on">Up = rotate</label>
+        <input type="radio" name="switch_mode" id="bt_type_b" class="">
+        <label for="bt_type_b" class="">Up = drop</label>
+      </div>
+      <div class="touch_controls">
+        <p>Swipe <strong>anywhere</strong> on the screen to play</p>
+        <p>Tap to rotate</p>
+        <p>Swipe down to drop</p>
+      </div>
+      <a class="button" href="#_" id="bt_new_game">New game</a>
+      <div class="about">
+        <h2>About Tetris JS</h2>
+        <p>This is a JS / HTML5 experiment using <a target="_blank" href="http://kineticjs.com/">KineticJS</a></p>
+        <p><a target="_blank" href="http://www.baptistebrunet.com/games/">Play more games</a></p>
+      </div>
+    </div>
+    <div id="page_game" class="page" style="display: block;">
+      <div id="game_col" style="width: 336px; height: 604.8px;">
+        <div id="game_zone"><div style="position: relative; display: inline-block; width: 336px; height: 604.8px;" class="kineticjs-content"><canvas style="padding: 0px; margin: 0px; border: 0px none; background: transparent none repeat scroll 0% 0%; position: absolute; top: 0px; left: 0px; width: 336px; height: 604.8px;" width="403" height="725"></canvas><canvas style="padding: 0px; margin: 0px; border: 0px none; background: transparent none repeat scroll 0% 0%; position: absolute; top: 0px; left: 0px; width: 336px; height: 604.8px;" width="403" height="725"></canvas><canvas style="padding: 0px; margin: 0px; border: 0px none; background: transparent none repeat scroll 0% 0%; position: absolute; top: 0px; left: 0px; width: 336px; height: 604.8px;" width="403" height="725"></canvas></div></div>
+        <div class="messages_wrapper">
+          <div id="messages"></div>
+        </div>
+        <div id="overlay" style="display: block;"><h2>Game Over</h2><div class="overview"><div class="points"><div class="nb_points">3382</div> points</div><div class="lines"><div class="nb_lines">16</div> lines</div></div><a class="button" id="bt_play_again">Play again</a><a class="button" id="bt_main_menu">Main menu</a><a class="button" target="_blank" href="http://www.baptistebrunet.com/games/">Play more games</a></div>
+      </div>
+      <div id="infos">
+        <div id="next_zone" style="width: 134.4px; height: 134.4px;"><div style="position: relative; display: inline-block; width: 134.4px; height: 134.4px;" class="kineticjs-content"><canvas style="padding: 0px; margin: 0px; border: 0px none; background: transparent none repeat scroll 0% 0%; position: absolute; top: 0px; left: 0px; width: 134.4px; height: 134.4px;" width="161" height="161"></canvas></div></div>
+        <a class="button" href="#_" id="bt_pause">Pause</a>
+        <div class="best_wrapper">
+          Best: <span id="best_zone">12532</span>
+        </div>
+        <div id="score_zone">3382</div>
+        <div class="lines_wrapper">
+          Lines: <span id="lines_zone">16</span>
+        </div>
+      </div>
+    </div>
+  </div> <!-- /#page -->
+  <div id="send_to_phone">
+    <h2>
+      Play it on
+      <br>your phone!
+    </h2>
+    <img class="illus_qr" src="Tetris%20JS_files/qr_code.png" alt="">
+    <img class="illus_fleche" src="Tetris%20JS_files/fleche.png" alt="">
+    <img class="illus_telephone" src="Tetris%20JS_files/telephone.png" alt="">
+  </div>
+  <div id="msg_portrait">
+    Please rotate your device to portrait mode
+  </div>
+  <!--[if lt IE 9]>
+    <div id="msg_old_browser">
+      Sorry, your browser doesn't support HTML5 Canvas.
+      <br>Please update your browser.
+    </div>
+  <![endif]-->
+
+  <div id="ad">
+    <script type="text/javascript" async="" src="Tetris%20JS_files/ga.js"></script><script type="text/javascript" src="Tetris%20JS_files/show_app_ad.js"></script>
+  </div>
+
+  <script type="text/javascript" src="Tetris%20JS_files/kinetic-v4.js"></script>
+  <script type="text/javascript" src="Tetris%20JS_files/tetris.js"></script>
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-20127424-1']);
+    _gaq.push(['_trackPageview']);
+    (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+</body></html>
